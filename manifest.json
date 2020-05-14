@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "Selector de Cursos CF",
+  "version": "0.1",
+  "description": "Permite senalar cursos de CF con duracion menor o igual a la configurada por el usuario",
+  "author": "Noemi Leon",
+  "version_name": "0.1 Alpha",
+
+  "icons": { 
+    "16": "img/icons/icon-16.png",
+    "48": "img/icons/icon-48.png",
+   "128": "img/icons/icon-128.png" 
+  },
+
+  "browser_action":{
+    "default_popup": "popup.html"
+  },
+
+  "permissions": ["tabs", "storage"],
+
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://codigofacilito.com/courses"],
+      "js": ["js/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "options_page": "options.html"
+}
